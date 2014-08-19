@@ -57,7 +57,7 @@ elseif strcmp(choice,'Duty Cycle w/ Video')
     EMGStartRaw = input('EMG burston? ');
     EMGEndRaw = input('EMG burstoff? ');
     EMGStart = EMGStartRaw - Trigger(1,1);
-    EMGWidth = (EMGEndRaw(i)-EMGStartRaw(i))/1000
+    EMGWidth = (EMGEndRaw(i)-EMGStartRaw(i))/1000;
     TailBeatRaw = input('Tail beat cycle vector (peak times)?');
     TailFrames = input('Total number frames recorded?');
     FPS = input('Frames per second?');
@@ -90,7 +90,7 @@ elseif strcmp(choice,'Duty Cycle w/ EMG Only')
     burston = input('EMG Onset = ');
     burstoff = input('EMG Offset = ');   
     EMGStart = burston - Trigger(1,2);
-    Width = burstoff(i)-burston(i)
+    Width = burstoff(i)-burston(i);
     EMGWidth = Width/1000;
 
     clear DutyCycle
