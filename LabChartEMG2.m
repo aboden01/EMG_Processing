@@ -3,26 +3,23 @@
 %clear previous variables%
 clear i
 clear j
-clear LeftEMG
 clear LStart
 clear LEnd
-clear RightEMG
 clear RStart
 clear REnd
 clear Difference
 
 %variables%
-LeftEMG = input('Vector with LEFT EMG on/offset data?');
-LStart = LeftEMG(:,2);
+
+LStart = input('Left EMG burston? ');
 LEnd = LeftEMG(:,3);
-RightEMG = input('Vector with RIGHT EMG on/offset data?');
-RStart = RightEMG(:,2);
+RStart = input('Right EMG burston? ');
 REnd = RightEMG(:,3);
 
 % time of L/R EMG overlap%
 count = 1;
-for i = 1:length(LeftEMG)
-    for j = 1:length(RightEMG)
+for i = 1:length(LStart)
+    for j = 1:length(RStart)
         if LStart(i) < RStart(j) && LEnd(i) > RStart(j)
             Difference(count) = LEnd(i) - RStart(j);
             count = count+1;
@@ -49,11 +46,10 @@ clear TailBeat
 
 %variables%
 Trigger = input('Trigger vector?');
-EMGX = input('EMG vector for Duty Cycle analysis?');
-EMGStartRaw = EMGX(:,2);
+EMGStartRaw = input('EMG burston? ');
+EMGEndRaw = input('EMG burstoff? ');
 EMGStart = EMGStartRaw - Trigger(1,1);
-Width = EMGX(:,4);
-EMGWidth = Width/1000;
+EMGWidth = (EMGEndRaw(i)-EMGStartRaw(i))/1000
 TailBeatRaw = input('Tail beat cycle vector (peak times)?');
 TailFrames = input('Total number frames recorded?');
 FPS = input('Frames per second?');

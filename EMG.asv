@@ -4,5 +4,3 @@
 X = input('Trials = ');
 Speed = input('Speed = ');
 DataProcessed = [DataProcessed ; Speed,mean(X),std(X)]
-
-%githubtest
