@@ -1,7 +1,8 @@
 function DutyCycle = DC(Trigger,burston,burstoff)
 
-EMGStart = EMGStartRaw - Trigger(1,2);
-Width = burstoff(i)-burston(i)
+n = 1:length(burston);
+EMGStart = burston - Trigger(1,2);
+Width = burstoff(n)-burston(n)
 EMGWidth = Width/1000;
 
 clear DutyCycle
