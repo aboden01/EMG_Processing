@@ -16,10 +16,10 @@ if strcmp(choice,'L/R EMG Overlap')
 
     %variables%
 
-    LStart = input('Left EMG burston? ');
-    LEnd = LeftEMG(:,3);
-    RStart = input('Right EMG burston? ');
-    REnd = RightEMG(:,3);
+    LStart = input('Left EMG burston = ');
+    LEnd = input('Left EMG burstoff = ');
+    RStart = input('Right EMG burston = ');
+    REnd = input('Right EMG burstoff = ');
 
     %time of L/R EMG overlap%
     count = 1;
@@ -35,7 +35,7 @@ if strcmp(choice,'L/R EMG Overlap')
     'Done.'
     
     Difference
-average_Difference = mean(Difference)
+    average_Difference = mean(Difference)
 
 elseif strcmp(choice,'Duty Cycle w/ Video')
 %% Duty Cycle
@@ -53,20 +53,20 @@ elseif strcmp(choice,'Duty Cycle w/ Video')
     clear TailBeat
 
     %variables%
-    Trigger = input('Trigger vector?');
-    EMGStartRaw = input('EMG burston? ');
-    EMGEndRaw = input('EMG burstoff? ');
+    Trigger = input('Trigger = ');
+    EMGStartRaw = input('EMG burston = ');
+    EMGEndRaw = input('EMG burstoff = ');
     EMGStart = EMGStartRaw - Trigger(1,1);
     EMGWidth = (EMGEndRaw(i)-EMGStartRaw(i))/1000;
-    TailBeatRaw = input('Tail beat cycle vector (peak times)?');
-    TailFrames = input('Total number frames recorded?');
-    FPS = input('Frames per second?');
+    TailBeatRaw = input('Tail beat cycle vector (peak times) = ');
+    TailFrames = input('Total number frames recorded = ');
+    FPS = input('Frames per second = ');
     TailRec = TailFrames / FPS; %length of video recording in seconds%
     TailBeat = TailBeatRaw - TailRec;
 
 
     %ID tailbeat cycle associated with burst and calculate duty cycle%
-    clear DutyCycle;
+    clear DutyCycle
     count = 1;
     for i = 1:length(EMGStart)
         for j = 1:length(TailBeat)-1
