@@ -56,6 +56,7 @@ elseif strcmp(choice,'Duty Cycle w/ Video')
     Trigger = input('Trigger = ');
     EMGStartRaw = input('EMG burston = ');
     EMGEndRaw = input('EMG burstoff = ');
+
     EMGStart = EMGStartRaw - Trigger(1,2);
     i = 1:length(EMGStartRaw);
     EMGWidth = (EMGEndRaw(i)-EMGStartRaw(i))/1000;
@@ -92,8 +93,8 @@ elseif strcmp(choice,'Duty Cycle w/ EMG Only')
     burstoff = input('EMG Offset = ');   
     EMGStart = burston - Trigger(1,2);
     n = 1:length(burston);
-    Width = abs(burstoff(n)-burston(n));
-    EMGWidth = Width/1000;
+    EMGWidth = abs(burstoff(n)-burston(n));
+
 
     clear DutyCycle
     count = 1;
