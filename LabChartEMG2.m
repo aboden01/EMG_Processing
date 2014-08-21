@@ -59,7 +59,7 @@ elseif strcmp(choice,'Duty Cycle w/ Video')
 
     EMGStart = EMGStartRaw - Trigger(1,2);
     i = 1:length(EMGStartRaw);
-    EMGWidth = (EMGEndRaw(i)-EMGStartRaw(i))/1000;
+    EMGWidth = EMGEndRaw(i)-EMGStartRaw(i);
     TailBeatRaw = input('Tail beat cycle vector (peak times) = ');
     TailFrames = input('Total number frames recorded = ');
     FPS = input('Frames per second = ');
@@ -71,9 +71,9 @@ elseif strcmp(choice,'Duty Cycle w/ Video')
     clear DutyCycle
     count = 1;
     for i = 1:length(EMGStart)
-        for j = 1:length(TailBeat)-1
-            if EMGStart(i) > TailBeat(j) && EMGStart(i) < TailBeat(j+1)
-               DutyCycle(count)= EMGWidth(i)/abs(TailBeat(j+1)-TailBeat(j));
+        for j = 1:length(TailBeat)-2
+            if EMGStart(i) > TailBeat(j) && EMGStart(i) < TailBeat(j+2)
+               DutyCycle(count)= EMGWidth(i)/abs(TailBeat(j+2)-TailBeat(j));
                 count = count+1;
             end
         end
@@ -106,7 +106,9 @@ elseif strcmp(choice,'Duty Cycle w/ EMG Only')
             end
         end
     end
+    
+DutyCycle_EMG
+average_DutyCycle_EMG = mean(DutyCycle_EMG)    
 end
 
- DutyCycle_EMG
- average_DutyCycle_EMG = mean(DutyCycle_EMG)
+ 
