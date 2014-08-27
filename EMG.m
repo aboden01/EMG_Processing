@@ -1,8 +1,6 @@
 % DC(input('TRIGGER = '), input('EMGX = '));
 % X = ans;
 
-X = input('Trials = ');
+X = input('Trial = ');
 Speed = input('Speed = ');
 DataProcessed = [DataProcessed ; Speed,mean(X),std(X)]
-
-%githubtest
