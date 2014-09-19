@@ -1,7 +1,8 @@
 
+%presents user w/ data analysis options
 choice = questdlg('Select a Process','EMG Processing Options','L/R EMG Overlap',...
-    'Duty Cycle w/ Video','Duty Cycle w/ EMG Only','default')
-
+    'Duty Cycle w/ Video','Duty Cycle w/ EMG Only','default') 
+    
 if strcmp(choice,'L/R EMG Overlap')
     %% EMG difference L/R sides
 
@@ -14,14 +15,13 @@ if strcmp(choice,'L/R EMG Overlap')
     clear REnd
     clear Difference
 
-    %variables%
-
+    %define variables%
     LStart = input('Left EMG burston = ');
     LEnd = input('Left EMG burstoff = ');
     RStart = input('Right EMG burston = ');
     REnd = input('Right EMG burstoff = ');
 
-    %time of L/R EMG overlap%
+    %calculate time of L/R EMG overlap%
     count = 1;
     for i = 1:length(LStart)
         for j = 1:length(RStart)
@@ -34,11 +34,15 @@ if strcmp(choice,'L/R EMG Overlap')
 
     'Done.'
     
+    %"Difference" will contain the complete list of values calculated, i.e.
+    %for each time there is an overlap, and the variable average_Difference
+    %will indicate the average overlap.
     Difference
     average_Difference = mean(Difference)
 
 elseif strcmp(choice,'Duty Cycle w/ Video')
-%% Duty Cycle
+    %% Duty Cycle based on individual EMG burst duration and the total 
+    %%tailbeat cycle period calculated from the video
 
     %clear previous variables%
     clear i
@@ -52,7 +56,7 @@ elseif strcmp(choice,'Duty Cycle w/ Video')
     clear TailRec
     clear TailBeat
 
-    %variables%
+    %define variables%
     Trigger = input('Trigger = ');
     EMGStartRaw = input('EMG burston = ');
     EMGEndRaw = input('EMG burstoff = ');
@@ -81,13 +85,17 @@ elseif strcmp(choice,'Duty Cycle w/ Video')
 
     'Done.'
 
-
+%the variable "DutyCycle" will list the duty cycle calculated for each EMG
+%pair, the variable "average_DutyCycle" will indicate the average of those
+%values.
     DutyCycle
     average_DutyCycle = mean(DutyCycle)
 
 elseif strcmp(choice,'Duty Cycle w/ EMG Only')
-%% Duty Cycle w/ EMG Only
+%% Duty Cycle based on indivudual EMG duration and the total tailbeat
+%%cycle based on time from one EMG to the next
 
+    %define variables
     Trigger = input('Trigger = ' );
     burston = input('EMG Onset = ');
     burstoff = input('EMG Offset = ');   
@@ -95,7 +103,7 @@ elseif strcmp(choice,'Duty Cycle w/ EMG Only')
     n = 1:length(burston);
     EMGWidth = abs(burstoff(n)-burston(n));
 
-
+    %calculate cycle duration and duty cycle for each EMG pair
     clear DutyCycle
     count = 1;
     for i = 1:length(EMGStart)-1
@@ -107,6 +115,9 @@ elseif strcmp(choice,'Duty Cycle w/ EMG Only')
         end
     end
     
+%the variable "DutyCycle_EMG" will list the duty cycle calculated for each EMG
+%pair, the variable "average_DutyCycle_EMG" will indicate the average of those
+%values.   
 DutyCycle_EMG
 average_DutyCycle_EMG = mean(DutyCycle_EMG)    
 end
