@@ -112,7 +112,7 @@ elseif strcmp(choice,'Duty Cycle w/ EMG Only')
     count = 1;
     for i = 1:length(EMGStart)-1
         if EMGStart(i) < 0
-            if EMGStart(i)-EMGStart(i+1)> -0.5
+            if EMGStart(i)-EMGStart(i+1)> -0.33
                 DutyCycle_EMG(count) = EMGWidth(i)/abs(EMGStart(i)-EMGStart(i+1));
                 count = count+1;
             end
