@@ -90,11 +90,15 @@ elseif strcmp(choice,'Duty Cycle w/ Video')
 %values.
     DutyCycle
     average_DutyCycle = mean(DutyCycle)
+    StandDev_DC = std(DutyCycle)
 
 elseif strcmp(choice,'Duty Cycle w/ EMG Only')
 %% Duty Cycle based on indivudual EMG duration and the total tailbeat
 %%cycle based on time from one EMG to the next
 
+    %clear previous variables
+    clear DutyCycle_EMG
+    
     %define variables
     Trigger = input('Trigger = ' );
     burston = input('EMG Onset = ');
@@ -119,7 +123,8 @@ elseif strcmp(choice,'Duty Cycle w/ EMG Only')
 %pair, the variable "average_DutyCycle_EMG" will indicate the average of those
 %values.   
 DutyCycle_EMG
-average_DutyCycle_EMG = mean(DutyCycle_EMG)    
+average_DutyCycle_EMG = mean(DutyCycle_EMG)
+StandDev_DC_EMG = std(DutyCycle_EMG)
 end
 
  
