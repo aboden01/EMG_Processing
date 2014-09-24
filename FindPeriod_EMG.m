@@ -17,8 +17,5 @@ count = 1;
         end
     end
     
-   
-    median_Period = median(Period_EMG)
-    IQR_Period = iqr(Period_EMG);
-    sugg_Period = median_Period - IQR_Period
+    sugg_Period = median(Period_EMG) - iqr(Period_EMG)
    
