@@ -41,3 +41,6 @@ while CONT == 1
     
     CONT = input('Continue (Y/N)? ');
 end
+
+OJO = 'Dont forget to rename TOTAL_DCs!!'
+disp(OJO)
