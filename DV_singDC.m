@@ -9,7 +9,7 @@ ChDur = Channel(:,2);
 ChInt = Channel (:,3); 
 ChStart = Channel(:,1);
 
-%calculate cycle duration and duty cycle for each EMG pair
+%calculate DC based on single channel
 
 count = 1;
 for i = 1:length(Channel)-1

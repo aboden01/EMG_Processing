@@ -1,6 +1,7 @@
 %assumes DataView txt is [OnTime Duration Interval]
 
 %clear previous variables
+clear TOTAL_DC
 clear DataView_DCs
 
 %define variables
@@ -18,7 +19,7 @@ for i = 1:length(Channel)-1
   end
 end
 
-DataView_DCs = TOTAL_DCs;
+TOTAL_DC = DataView_DCs;
 
 
 Y=1;
@@ -37,10 +38,10 @@ while CONT == 1
             count = count+1;
         end
     end
-    horzcat(TOTAL_DCs,DataView_DCs);
+    TOTAL_DC = horzcat(TOTAL_DC,DataView_DCs);
     
     CONT = input('Continue (Y/N)? ');
 end
 
-OJO = 'Dont forget to rename TOTAL_DCs!!'
+OJO = 'Dont forget to rename TOTAL_DCs!!';
 disp(OJO)
