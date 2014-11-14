@@ -1,28 +1,27 @@
+%DC data for SINGLE CHANNEL vs. speed
 
+Speed = input('Speed (BL/sec) = ');
+Raw_Data = input('DC data set = ');
 
-
-%% 
+CombData = [Speed mean(Raw_Data) std(Raw_DATA)];
 
 Y=1;
 N=0;
 CONT = input('Continue (Y/N)? ');
 while CONT == 1
-    Channel = input('Channel?   ');
-    ChDur = Channel(:,2);
-    ChInt = Channel (:,3);
-    ChStart = Channel(:,1);
-    
-    count = 1;
-    for i = 1:length(Channel)-1
-        if ChStart(i)-ChStart(i+1)< 310
-            DataView_DCs(count) = ChDur(i)/ChInt(i+1);
-            count = count+1;
-        end
-    end
-    horzcat(TOTAL_DCs,DataView_DCs);
+    Speed = input('Speed (BL/sec) = ');
+    Raw_Data = input('DC data set = ');
+    CombData = [CombData; Speed mean(Raw_Data) std(Raw_DATA)];
     
     CONT = input('Continue (Y/N)? ');
 end
 
-sugg_Period = median(Period_EMG) - iqr(Period_EMG);
-    Period_Data = [Period_Data; sugg_Period];
+x = CombData(:,2);
+y = CombSata(:,1);
+e = DataProcessed(:,3);
+
+figure
+errorbar(y,x,e)
+title('Total DC Data')
+xlabel('Speed (BL/s)')
+ylabel('Mean Duty Cycle')
