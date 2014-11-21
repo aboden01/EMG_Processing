@@ -13,7 +13,7 @@ ChStart = Channel(:,1);
 %calculate DC based on single channel
 count = 1;
 for i = 1:length(Channel)-1
-  if ChStart(i)-ChStart(i+1)< 310
+  if (ChStart(i+1)-(ChStart(i)+ChDur(i))) < 310
        DataView_DCs(count) = ChDur(i)/ChInt(i+1);
        count = count+1;
   end
@@ -31,9 +31,10 @@ while CONT == 1
     ChInt = Channel (:,3);
     ChStart = Channel(:,1);
     
+    clear DataView_DCs
     count = 1;
     for i = 1:length(Channel)-1
-        if ChStart(i)-ChStart(i+1)< 310
+        if (ChStart(i+1)-(ChStart(i)+ChDur(i))) < 310
             DataView_DCs(count) = ChDur(i)/ChInt(i+1);
             count = count+1;
         end
@@ -43,5 +44,5 @@ while CONT == 1
     CONT = input('Continue (Y/N)? ');
 end
 
-OJO = 'Dont forget to rename TOTAL_DCs!!';
+OJO = 'Dont forget to rename TOTAL_DC!!';
 disp(OJO)
